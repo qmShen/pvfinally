@@ -1,0 +1,57 @@
+%!TEX root = ../article.tex
+\section{Related Work}
+\label{sec:rel}
+
+\subsection{Recurrent Neural Networks}
+\label{sec:rnn}
+Recurrent Neural Networks (RNNs) is a class of neural networks that contains feedback connections~\cite{hochreiter1991untersuchungen}.
+Compared with fully connected neural networks, this architecture is capable of processing temporal data and learning sequences.
+Many RNN variants have also been developed in the past decades.
+One typical work is Long-Short Term Memory (LSTM)~\cite{hochreiter1997long}.
+By integrating several gate functions and appending an additional cell state to the vanilla RNN, LSTM avoids the gradient vanishing problem when processing the long sequences.
+A similar but computationally more efficient approach is the Gated Recurrent Unit (GRU)~\cite{cho2014learning}, which simplifies the model architecture by using only two gate functions: update gate and reset gate.
+To better utilize more data along the sequence, the bi-directional RNN~\cite{schuster1997bidirectional} is proposed to capture both past and future information to improve prediction.
+Greff et al. proposed a comprehensive survey~\cite{greff2017lstm} to summarize and compare these RNN variants in order to guide model selection under different scenarios.
+
+RNN-based models have not only been proven successful in performing Natural Language Processing (NLP) tasks such as machine translation~\cite{sutskever2014sequence} and question answering~\cite{hermann2015teaching}, but have also been adopted in broader domains such as weather forecasting~\cite{xingjian2015convolutional} and environmental factor prediction~\cite{chen2018applications}.
+For example, Oprea et al. proposed an RNN-based architecture to forecast $PM_{2.5}$ air pollutants~\cite{oprea2016neural}.
+Compared with the NLP domain, these critical areas not only require good model performance but also need humans to understand how a prediction is generated and whether the results are trustable for guiding further decision makings~\cite{lipton2017doctor}.
+However, understanding RNNs in such scenarios is challenging.
+On the one hand, as each input dimension is usually informative and usually indicates an interpretable factor compared with word embeddings used in NLP, analyzing which features have the most impact on prediction results is important.
+On the other hand, users also need to explore and understand how the hidden states evolve over time in order to reveal the underlying working mechanism of the RNN along the sequence.
+We propose MultiRNNExplorer to better understand and interpret RNN models, especially when the model input is multi-dimensional as with the above critical areas.
+
+\subsection{Machine Learning Interpretation}
+\label{sec:mlinter}
+In recent years, many machine learning interpretation methods have been developed, which can mainly be categorized into two groups: model reduction and feature contribution.
+
+Model reduction methods usually learn a surrogate model to approximate the original complex model.
+The surrogate model is usually simple and interpretable, such as linear regression~\cite{ribeiro2016should} and decision trees~\cite{craven1996extracting}. 
+Depending on the ways of approximating the original model's behaviors, there are three main ways to conduct model reduction: decompositional, pedagogical, and eclectic~\cite{andrews1995survey}.
+Decompositional methods are usually model dependent and simplify the original model structure, such as the layer and weights of the neural network.
+Pedagogical methods only utilize the input and output information to mimic the original model.
+Eclectic methods are either a combination of the previous two approaches or are distinctively different from them.
+Though model-reduction-based methods are flexible and easy to understand, it is questionable whether or when the surrogate model truly reflects the original model's behaviors.
+We thus discard this approach in our work.
+
+Feature contribution methods help users understand the relationships between input features and the output prediction.
+They usually assign each feature an importance score to indicate how it impacts the final prediction.
+One classical work is Partial Dependence Plot (PDP)~\cite{friedman2001greedy}, which depicts how feature value changes affect predictions.
+A PDP is usually visualized as a line \textbf{}chart in which the x-axis represents feature values and the y-axis represents prediction possibilities (partial dependence scores).
+For each feature, its partial dependence scores are usually calculated by iteratively fixing the feature input of all the data points to a certain value and getting the average prediction.
+One recent work, SHAP~\cite{lundberg2017unified}, also calculates feature attribution, but from a local perspective.
+SHAP is based on the ideas of Shapley Values from game theory, which calculates the feature contribution of a data instance by comparing it with a set of reference data points.
+Compared with global solutions, it is more consistent and locally accurate.
+One major limitation of feature contribution methods is is that they are computationally expensive.
+In this work, we alleviate this problem by adopting a pre-processing stage before interactive exploration.
+
+Apart from the above work that focuses on describing the input-output relationship,
+some work focuses on understanding and analyzing the internal working mechanism of RNNs, especially the hidden layer behaviors, by utilizing visualization techniques.
+Karpathy et al. first conducted some explorative studies on hidden cell activation on different sequence items~\cite{karpathy2015visualizing}.
+LSTMVis~\cite{strobelt2018lstmvis} further analyzed and compared the activation changes of each individual cell to demonstrate that different cells may capture different language patterns over time.
+Ming et al. developed RNNVis~\cite{ming2017understanding} to depict the co-clustering patterns between hidden states and input words.
+There is also some other work that focuses on a particular model or domain.
+For example, Seq2Seq-Vis~\cite{strobelt2019s} mainly focuses on the sequence-to-sequence model and RetainVis~\cite{kwon2019retainvis} enables experts to analyze electronic medical data using a RNN model.
+Though these methods show how the relationships between hidden units and input data change over time, they fail to capture the importance evolution of each individual input dimension, which prevents them being adopted in critical areas such as finance and environmental factor forecasting.
+We aim to solve this problem by revealing the activation sensitivity of hidden units to different features and highlighting what features mostly affect the final prediction the most over time.
+

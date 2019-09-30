@@ -1,0 +1,17 @@
+%!TEX root = ../article.tex
+\subsection{Projection View}
+To help users obtain an overview of case clusters and outliers (\textbf{T5}), we design the Projection View (Fig.\ref{fig:teaser}E) which supports various interactions such as zooming and brushing to allow users to select a subset of data for further examination (\textbf{T7}). 
+
+In the Projection View, each circle represents a individual case. There are many multi-dimensional reduction methods such as MDS and PCA; we select t-SNE as it can strongly repel dissimilar points and show clusters clearly.
+\QM{Given an individual case, we flatten the cluster importance at all timestamps (discussed in Sec.\ref{section:feature_importance}) to 1-dimensional as the t-SNE embedding vector.}
+Thus, the positions of the circles reflect the similarity of their cluster importance.
+
+When multiple data subsets are selected, we use a categorical color scheme to fill the circles so that the data sequences from the same data subset will have the same color in both components.
+Users can brush to select data sequences for detailed examination in the Sequence View.
+
+One major consideration in developing the Projection View is the scalability problem.
+When the number of circles is large, the circles may overlap with each other, and the Projection View can be cluttered.
+We adopt a node overlap removal algorithm for the similarity projection and support panning and zooming to allow users to explore a data subset.
+
+Furthermore, to improve the flexibility of the case selection, we add a two-scale timeline (Fig.\ref{fig:teaser}E top) to show the target feature trend, enabling user filtering of the  cases by time, and a feature selection component (Fig.\ref{fig:teaser}E right) to filter the cases by feature value.  
+

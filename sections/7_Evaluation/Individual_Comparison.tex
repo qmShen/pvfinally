@@ -1,0 +1,37 @@
+\subsection{Case exploration}
+
+In Hong Kong, air quality always shows seasonal patterns such as the ``large winter-summer contrasts in $PM_{2.5}$ mass" due to the Asiatic monsoon~\cite{louie2005seasonal}. We conduct this case study to understand the model behavior in different seasons.  
+
+\subsubsection{Overview of the model behavior across seasons}
+
+The Projection View allows users to select interesting sequences according to different times by brushing on the timeline (Fig.~\ref{fig:teaser}E) and provides an overview of all cases (\textbf{T5}).
+We first choose the GRU-Dense model and target feature of $PM_{2.5}$.
+We gradually select the time ranges to roughly filter the cases in winter, spring, summer, and fall. 
+The unfiltered sequences are colored in light grey to highlight the selected cases as shown in  Fig.~\ref{fig:seasonal_feature}. 
+We found that the fall and winter sequences are clustered at the left-bottom part of the whole figure (Fig.~\ref{fig:seasonal_feature}A,D). 
+The sequences in summer gather at the right-top part (Fig. \ref{fig:seasonal_feature}C), while the sequences in spring are distributed in different locations compared with the other three seasons (Fig.\ref{fig:seasonal_feature}B).
+Even though some outliers exist in the Projection View as shown in Fig.~\ref{fig:seasonal_feature}A$_1$,C$_1$, we can find the model can capture the complex seasonal features in data. 
+
+\subsubsection{Explore the model behavior in winter}
+
+Furthermore, we notice that several sequences indicate the target location has a serious $PM_{2.5}$ pollutant in winter. 
+In the Projection View, we first select the time range of January 2018 (Fig.~\ref{fig:winter_exploration}A) to highlight all the cases in this time range (Fig. \ref{fig:winter_exploration}B). 
+We notice there are many cases are colored in dark red, which indicates these cases suffer a heavy $PM_{2.5}$ pollutant (Fig.~\ref{fig:winter_exploration}C1).
+We select these sequences to explore their feature importance distributions and rankings.
+The top ten important features are \textit{\color{WINDColor}{Wind Speed}}, $\color{PM25Color}{PM_{2.5}}$ and $\color{PM10Color}{PM_{10}}$.
+The selected sequences also appear in the Individual Views; all these sequences form one stack, and we choose one of them as an example as shown in Fig.~\ref{fig:winter_exploration}E$_1$. 
+In the Cluster Importance Chart, cluster 3, 6, and 7 show great influence in the forecast. 
+These corresponding feature clusters are shown in Fig.~\ref{fig:winter_exploration}E$_3$, which presents the clusters of $PM_x$ and \textit{Wind Speed} respectively. 
+The above exploration further indicates that the most important features in the forecasting are about $\color{PM25Color}{PM_{2.5}}$, $\color{PM10Color}{PM_{10}}$, and \textit{\color{WINDColor}{Wind Speed}}. 
+
+The domain expert states: ``During winter, strong radiative cooling over the continent creates a high-pressure anticyclone that drives cold, dry polar air from the continent into the surrounding oceanic areas, resulting in weak to moderate northeasterly winds or strong northerly winds" \cite{louie2005seasonal, murakami1979winter}. 
+The weak to moderate wind is able to bring the air pollutant from Pearl River Delta region in China, which is a highly populated region and has a lot of heavy industry \cite{cao2003characteristics}.
+Thus, the major factors that mostly influence Hong Kong's air quality in winter are the air pollutants and the wind.
+Specifically, the $PM_{2.5}$ and $PM_{10}$ from the north and east affects the prediction results the most. 
+
+We are also interested in how different models behave between the high-pollutant and low-pollutant sequences in the winter. 
+We select individual cases with low $PM_{2.5}$ from the Projection View as Fig.~\ref{fig:winter_exploration}C$_2$ shows, and two stacks if individual cases appear in the Individual View. 
+By observing the representative case (Fig.\ref{fig:winter_exploration}E$_2$), we find a cluster which is very important at the last timestamp in the Cluster Importance Chart (Fig.~\ref{fig:winter_exploration}E$_4$), which indicates nearby $PM_{2.5}$ and $PM_{10}$. 
+Both the Top Feature List (Fig.~\ref{fig:winter_exploration}E$_5$) and the Cluster Importance Chart show that the features of recent time steps are very important for the forecast, which is different from the heavy pollution sequences (Fig.~\ref{fig:winter_exploration}E$_6$). 
+We guess that for the low air pollutant (target feature) cases, only recent important features are leveraged by the model. 
+
