@@ -55,7 +55,7 @@ Instead, the $PM$ pollutants are easily transported from the north, west, and ea
 	\centering
 	\includegraphics[width=0.45\textwidth]{pictures/Evaluation/winter_exploration.pdf}
 	\vspace{-3mm}
-	\caption{	Case exploration for the $PM_{2.5}$ forecast in winter. A, B) Filter and highlight the individual cases in January 2018; C1, C2) Two groups of individual cases are selected by brushing; D) The top 10 importance features for the group selected in C1; E1, E2) Representative cases of C1 and C2.}
+	\caption{Case exploration for the $PM_{2.5}$ forecast in winter. A, B) Filter and highlight the individual cases in January 2018; C1, C2) Two groups of individual cases are selected by brushing; D) The top 10 importance features for the group selected in C1; E1, E2) Representative cases of C1 and C2.}
 	\label{fig:winter_exploration}
 	\vspace{-4mm}
 \end{figure}
@@ -65,7 +65,7 @@ With the selected feature of \textit{100\_NE\_PM25}, one observation is that the
 % While the corresponding feature for vallina RNN have no such kind of pattern. 
 This solves one question raised by the domain experts: is it necessary to use such complex models like RNN to conduct air pollutant forecasting tasks?
 It is a controversial question~\cite{brownlee2017long} as in some applications all important information is included within within recent small time ranges~\cite{gers2002applying} and do not necessarily require complex machine learning models. 
-However, by using our system, we can find that the GRUs are able to memorize more long-term information than vallina RNNs. 
+However, by using our system, we can find that the GRUs are able to memorize more long-term information than vanilla RNNs. 
 Since the air pollutant and meteorology features (such as temperature) have a daily periodic pattern, the input features around 24 hours ahead are also considered relevant to the forecast. 
 In addition, we can observe that the GRU models have better performance compared with vanilla RNNs from Table~\ref{table:model_configuration}. 
 % ~\yh{requires some logic to connect to gated RNN.}

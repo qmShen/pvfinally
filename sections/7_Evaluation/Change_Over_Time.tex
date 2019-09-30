@@ -2,7 +2,7 @@
 To explore the model behavior over the training process, we manually select the RNN model trained under epoch numbers of 5, 40, 120, and 200. Fig.~\ref{fig:evolution_epochs} shows the projections and top five most important features at different epochs.
 
 In the Projection View (Fig.~\ref{fig:evolution_epochs}A), we choose $PM_{2.5}$ as the target feature and use a sequential color schema to indicate the predicted value where a darker color indicates a higher $PM_{2.5}$. 
-At early stages ($5^{th}$ and $40^{th}$ epochs), we find that the points with a deep color are distributed uniformly in the project and are mixed together with the points with a light color. 
+At early stages ($5^{th}$ and $40^{th}$ epochs), we find that the points with a deep color are distributed uniformly in the projection and are mixed together with the points with a light color. 
 This indicates that the cluster gradients are not able to present the distribution of the target feature yet.
 When trained after more epochs, the dark points become more concentrated. 
 
@@ -28,7 +28,9 @@ With these observations, we derive the conclusion that the model gradually learn
 	\centering
 	\includegraphics[width=0.45\textwidth]{pictures/Evaluation/evolution_epochs.pdf}
 	\vspace{-3mm}
-	\caption{The model behavior over the learning process. Top: Projection Views shows the high-pollutant points gradually gathered during the training process; middle: the top five important features at the corresponding epochs; bottom: the feature cluster change at each epoch.}
+	\caption{\UC{The model behavior over the learning process. A, B and C show the Projection View, top five important features and feature clusters at the corresponding epochs.}
+% 	A: Projection Views shows the high-pollutant points gradually gathered during the training process; B: the top five important features at the corresponding epochs; C: the feature cluster change at each epoch.
+	}
 	\label{fig:evolution_epochs}
 	\vspace{-4mm}
 \end{figure}
