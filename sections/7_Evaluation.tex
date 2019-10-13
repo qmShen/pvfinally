@@ -2,10 +2,10 @@
 % \yh{We may 1) change terms like the epoch 5, 40 to the $5^{th}$, $40^{th}$ epoch; and 2) Capitalize the first letter of each word in view names such as cluster view to the Cluster View.}
 
 In this section, we demonstrate the effectiveness of MultiRNNExplorer in analyzing model behaviors and feature importance. 
-We use the air pollutant data from the year 2015 to 2017 to train the model and use 8,375 sequences in the year 2018 as testing data for analysis. 
+We use the air pollutant data between 2015 to 2017 to train the model and use 8,375 cases in 2018 as testing data for analysis. 
 % Notice that feature importance and hidden unit response are calculated on testing data,  
 % The testing dataset contains the 8,375 individual cases in the year 2018.
-The accuracy and hyperparameters of different models are listed as table~\ref{table:model_configuration}. 
+The accuracy and hyper-parameters of different models are listed in Table~\ref{table:model_configuration}. 
 We demonstrate our system to the domain expert and analyze the trained models on several tasks.
 
 \begin{table}[h!]
@@ -15,7 +15,7 @@ We demonstrate our system to the domain expert and analyze the trained models on
  \hline
  Model & Size & Dense Layer & MSE ($PM_{2.5}$) \\ [0.5ex] 
  \hline
-    vallina RNN&100&No&5.31 $\pm$ 0.98 \\
+    Vanilla RNN&100&No&5.31 $\pm$ 0.98 \\
     GRU&100&No&4.32 $\pm$ 0.51\\
     LSTM&100&No&4.81 $\pm$ 0.31\\
     GRU-Dense&100&3&4.25 $\pm$ 0.21\\

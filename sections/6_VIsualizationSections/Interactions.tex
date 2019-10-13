@@ -1,10 +1,20 @@
 \subsection{Interactions and Linkage}
-To better facilitate the interactive exploration of RNNs, our system supports cross-view interactions. In this section, we summarize the interactions and linkage among all four views.
+To better facilitate the interactive exploration of RNNs, our system supports cross-view interactions. 
+% In this section, we summarize the interactions and linkage among all four views.
 
 \textbf{Cross-view highlight.} 
-In summary, there are three key visualization components appearing across different views: \textbf{feature}, \textbf{feature cluster} and \textbf{case}. These components are visualized in different forms in different views to support various analysis requirements. For example, a feature is visualized as a glyph (Fig.\ref{fig:cluster_design}E) in the cluster view,  visualized as a series of boxplots (Fig.\ref{fig:teaser}C) in the Feature Importance View and shown as both a line chart (Fig.\ref{fig:individual_view}A$_1$) and a sequence (Fig.\ref{fig:individual_view}A$_3$) in the individual view. If one feature is selected by mouse hover, the corresponding visualization element in other views will be highlighted with a border stroke.
+There are three key visualization components appearing across different views: \textbf{features}, \textbf{feature clusters}, and \textbf{cases}. 
+These components are visualized and encoded in different approaches in across views to support various analysis requirements. 
+% For example, a feature is visualized as a glyph (Fig.\ref{fig:cluster_design}E) in the cluster view,  visualized as a series of boxplots (Fig.\ref{fig:teaser}C) in the Feature Importance View and shown as both a line chart (Fig.\ref{fig:individual_view}A$_1$) and a sequence (Fig.\ref{fig:individual_view}A$_3$) in the individual view. 
+If one feature is selected, its corresponding visual elements in other views will be highlighted.
+
+% In summary, there are three key visualization components appearing across different views: \textbf{feature}, \textbf{feature cluster} and \textbf{case}. These components are visualized in different forms in different views to support various analysis requirements. For example, a feature is visualized as a glyph (Fig.\ref{fig:cluster_design}E) in the cluster view,  visualized as a series of boxplots (Fig.\ref{fig:teaser}C) in the Feature Importance View and shown as both a line chart (Fig.\ref{fig:individual_view}A$_1$) and a sequence (Fig.\ref{fig:individual_view}A$_3$) in the individual view. If one feature is selected by mouse hover, the corresponding visualization element in other views will be highlighted with a border stroke.
 
 \textbf{Linkage between individual view and feature importance view.} 
-When multiple individual cases are selected, in addition to visualizing these cases in individual views, the feature importance by time will be visualized as a line chart in the corresponding feature importance views as Fig.\ref{fig:teaser}C shows. When the user chooses an individual case by mouse hover, the corresponding line-chart will be highlighted by border stroke width. If the user selects multiple individual cases using check boxes, the corresponding line charts will be highlighted in red color.
+When multiple individual cases are selected, the feature importance by time will be visualized as multi-line charts as Fig.~\ref{fig:teaser}C shows. 
+When users hovering over an individual case , the corresponding line-chart will be highlighted. 
+% If the user selects multiple individual cases using check boxes, the corresponding line charts will be highlighted in red color.
 
 
+% \textbf{Linkage between individual view and feature importance view.} 
+% When multiple individual cases are selected, in addition to visualizing these cases in individual views, the feature importance by time will be visualized as a line chart in the corresponding feature importance views as Fig.\ref{fig:teaser}C shows. When the user chooses an individual case by mouse hover, the corresponding line-chart will be highlighted by border stroke width. If the user selects multiple individual cases using check boxes, the corresponding line charts will be highlighted in red color.

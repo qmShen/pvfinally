@@ -1,8 +1,8 @@
 \section{Model Interpretation}
-This section first describes how we analyze the relationships between features and hidden states (\textbf{T4}).
+This section first describes how we analyze the relationships between features and hidden states (\textbf{T3}).
 Specifically, we propose an efficient method to calculate how sensitive each hidden state is to certain feature changes and apply a clustering method to group response relationship patterns for better scalability.
 This provides users an overview on how the model categorizes different features and perturbing features to what value ranges may largely affect model behaviors.
-We also introduce a gradient-based method to identify the most important features that can impact the prediction over time (\textbf{T2}).
+We also introduce a gradient-based method to identify the most important features that can impact the prediction over time (\textbf{T2, T4}).
 This provides another perspective on analyzing how feature importance changes along the sequence.
 These two approaches are complementary to each other in enabling users'  understanding and explaination of model behaviors.
 
@@ -60,7 +60,7 @@ Dis(S1, S2) = \left \{
 
 \begin{figure}[t]
 	\centering
-	\includegraphics[width=0.45\textwidth]{pictures/methods/unit_response_kdeplot.pdf}
+	\includegraphics[width=0.48\textwidth]{pictures/methods/unit_response_kdeplot.pdf}
 	\vspace{-3mm}
 	\caption{Compare the response of hidden units(92 and 93) to features ($PM_{2.5}$ and $SO_2$). 
 % 	Top left and bottom right: the distribution of the background is different from the distribution of other feature selections, which shows the hidden unit 92 and 93 response to $PM_{2.5}$ and $SO_2$ respectively.
@@ -71,9 +71,9 @@ Dis(S1, S2) = \left \{
 
 
 To quantitatively measure the relationship strength between a hidden unit and a specific input feature, we compare the hidden unit distribution of data in different feature ranges with the distribution of all the data.
-A larger difference indicates a stronger relationship as the hidden unit will generate different values when the feature value changes.
-Specifically, the relationship strength between the $j^{th}$ hidden unit and feature $f$ can be calculated as:
-
+A larger difference indicates a stronger relationship as the hidden unit will generate different values when the feature value changes. As shown in Fig.~\ref{fig:unit_distribution_subgroup}, the ks-statistics of unit 92-$PM_{2.5}$ and unit 93-$SO_{2}$ are significantly larger than the other two combinations, indicating the statistics can effectively measure the distribution difference.
+% Specifically, the relationship strength between the $j^{th}$ hidden unit and feature $f$ can be calculated as:
+Specifically, the relationship strength between the $j^{th}$ hidden unit and feature $f$ can be measured as the maximum ks-statistics among all different feature selections:
 \begin{equation}
     \label{equation:qualify_response}
     \begin{split}
@@ -82,8 +82,6 @@ Specifically, the relationship strength between the $j^{th}$ hidden unit and fea
     & Dis(\mathsf{H}^{j, f},~\mathsf{H}_{perc~\geq~0.75}^{j, f}))
     \end{split}
 \end{equation}
-
-
 
 \subsection{Hidden Unit and Feature Clustering} \label{section:clustering}
 Another major challenge for interpreting RNN models on multi-dimensional sequential data is scalability.
@@ -140,4 +138,4 @@ However, for input $x$ with the length of $T$,  the total number of all feature 
     W(y^l, H^i_t) =\displaystyle\sum_{x^k_t \in H^i_t}|w(y^l, x^k_t)|
  \end{multlined}
 \end{equation}
-\QM{Thus, the size of the cluster importance for all timestamps is $C \times T$ where $C$ is the number of clusters and $C<N$}. 
+\QM{Thus, the size of the cluster importance for all timestamps is $C \times T$ where $C$ is the number of clusters ($C<N$)}. 

@@ -2,33 +2,41 @@
 % \section{Introduction}
 \label{section:introduction}
 Recurrent neural networks (RNNs) have been widely applied in various natural language processing (NLP) tasks such as machine translation and sentiment analysis. 
-Compared with other network architectures like fully connected networks, RNNs can effectively model sequential data.
-Benefiting from this, RNNs have been extended to other domains of sequential data beyond NLP, such as to forecast weather\cite{xingjian2015convolutional, cao2012forecasting, shi2017deep}, air pollutant\cite{oprea2016neural, zhou2017prediction, li2017long}, and even stock market\cite{kim2018forecasting,nelson2017stock,akita2016deep}.
-Compared to NLP tasks which take latent embeddings as inputs, the input features in these applications are usually multi-dimensional time series where each dimension has its own semantic meaning.
-In air pollutant forecast, as a focus of this work, the inputs are hourly recorded series of multi-dimensional pollutants (\emph{e.g.}, $SO_{2}$) and influences (\emph{e.g.}, \textit{wind speed}).
+% Compared with other network architectures like fully connected networks, RNNs can effectively model sequential data.
+Benefiting from the capacity to model sequential data, RNNs have been extended to other domains of sequential data beyond NLP, such as weather forecast\cite{xingjian2015convolutional, cao2012forecasting, shi2017deep} and air pollutant prediction\cite{oprea2016neural, zhou2017prediction, li2017long}. 
+% and even stock market\cite{kim2018forecasting,nelson2017stock,akita2016deep}.
+Compared to NLP tasks that take latent embeddings as inputs, the input features in these applications are usually multi-dimensional time series where each dimension has its own semantic meaning.
+For example, in air pollutant forecast, RNN models are widely adopted by domain experts where input sequences are hourly recorded series of high-dimensional pollutants (\emph{e.g.}, $SO_{2}$) and meteorology features (\emph{e.g.}, \textit{wind speed}).
+% After developing RNN models for forecasting air pollutant concentration, the domain researchers aim to further understand how RNNs model time-series data and if the model's behaviour is consistent with their domain knowledge, thus gain trust in prediction. 
+% The time-series data in this application are sequences of hourly recorded high-dimensional vectors in which each dimension indicates a feature related to the air pollutant such as \textit{wind speed} or the concentration of $SO_{2}$.
+% The sequence length ranges between 6 and 72 to record the historical data from the previous 6 to 72 hours.
 
-Despite their competitive performance, RNNs are considered to be black-box models that are hard to interpret.
-The lack of understanding of the internal mechanisms makes the models untrustworthy and further limits their extension to other domain applications. 
+Despite the competitive performance of RNNs, the lack of understanding of their internal mechanisms makes the models untrustworthy and further limits their extension to other domain applications. 
 During model development, the domain experts usually want to better understand the models' forecast.
-On the one hand, they tend to learn whether the model's behavior confirms any hypotheses according to existing domain knowledge, which gains confidence in the forecast.
-On the other hand, the experts also aim to identify unobserved patterns by exploring different cases to enrich their understanding of the domain problem.
-Understanding RNNs also helps model designers better choose models and tune hyper-parameters, adjust the model's architecture, and remove unnecessary features in the input space.
+They tend to learn whether the model's behavior confirms any hypotheses according to existing domain knowledge, which helps gain confidence in prediction for decision making.
+On the other hand, the experts also aim to identify the patterns that have not been observed before by exploring different cases to enrich their knowledge of the domain problem.
+\UC{In addition, understanding RNNs also helps model designers to choose appropriate model architecture and hyper-parameters.}
+% Understanding RNNs also helps model designers better choose models and tune hyper-parameters, adjust the model's architecture, and remove unnecessary features in the input space.
+% unobserved -> unknown
 
-In this work, we are motivated by the requirements of air pollutant forecast. 
-The domain researchers have developed RNN models to forecast the concentration of air pollutants.
-They aim to understand how RNNs model time-series data and if the model's behaviour matches their domain knowledge, thus increasing confidence in the models. 
-As opposed to the symbolic sequences (sentences) used in NLP tasks, the time-series data in our application are sequences of hourly recorded high-dimensional vectors in which each dimension indicates a feature related to the air quality pollutant such as \textit{wind speed} or   
-the concentration of $SO_{2}$.
-The sequence length ranges between 6 and 72 to record the historical data from the previous 6 to 72 hours.
+% In this work, we are motivated by the requirements of air pollutant forecast. 
+% The domain researchers have developed RNN models to forecast the concentration of air pollutants.
+% They aim to understand how RNNs model time-series data and if the model's behaviour matches their domain knowledge, thus increasing confidence in the models. 
+% The time-series data in our application are sequences of hourly recorded high-dimensional vectors in which each dimension indicates a feature related to the air pollutant such as \textit{wind speed} or   
+% the concentration of $SO_{2}$.
+% The sequence length ranges between 6 and 72 to record the historical data from the previous 6 to 72 hours.
 
 
-Existing work on RNN interpretation mainly focuses on NLP tasks. 
-For example, LSTMVis~\cite{strobelt2018lstmvis} uses parallel coordinates to visualize the periodic patterns of hidden states in order for experts to verify their hypotheses.
-RNNVis~\cite{ming2017understanding} models the input text and hidden units as a bipartite graph and uses co-clustering techniques to cluster the hidden units and text simultaneously to present more structural information learned by the model. 
+% Existing work on RNN interpretation such as mainly focuses on NLP tasks. 
+% For example, LSTMVis~\cite{strobelt2018lstmvis} uses parallel coordinates to visualize the periodic patterns of hidden states in order for experts to verify their hypotheses.
+% RNNVis~\cite{ming2017understanding} models the input text and hidden units as a bipartite graph and uses co-clustering techniques to cluster the hidden units and text simultaneously to present more structural information learned by the model. 
+% Both of these two works interpret hidden units by providing their relevant words as language contexts.
+% However, existing techniques cannot be directly applied in RNNs for high-dimensional time-series forecasts.
+% \UC{Merge with the next paragraph}
+
+Existing work on RNN interpretation such as LSTMVis~\cite{strobelt2018lstmvis} and RNNVis~\cite{ming2017understanding} mainly focus on NLP tasks. 
 Both of these two works interpret hidden units by providing their relevant words as language contexts.
 However, existing techniques cannot be directly applied in RNNs for high-dimensional time-series forecasts.
-
-
 First, the high dimensionality of the input sequence makes it difficult to discover relationships between features and hidden states. 
 Since different features at various timestamps are correlated, traditional techniques are not applicable as they are not designed to reveal how feature importance changes over time, which hinders the domain experts' ability to analyze if the prediction is consistently generated.
 Analyzing this complex temporal multi-dimensional data requires an effective visualization design that can reveal both cross-dimension data relationships and the model's temporal behavior.
@@ -44,21 +52,22 @@ This requires the visualization methods to have good scalability in order to dem
 % Specifically, we develop a co-clustering view (\zw{Fig.~\ref{fig:teaser}(xxx)?}) to visualize the relations between hidden units and input features and support flexible interactions to allow users focusing on interested features or feature value ranges.
 % We also propose a sequence view (\zw{Fig.~\ref{fig:teaser}(xxx)?}) to summarize and compare the temporal hidden unit and feature importance along the sequences with good scalability.
 
-To address these challenges, we propose MultiRNNExplorer, a visual analytics system to help domain experts to understand RNNs in high-dimensional time-series forecasts from two aspects: the model mechanism and the feature importance. In understanding model mechanism, we estimate the overall response between hidden units and features by measuring the distribution variation of hidden units' output across different feature value selections. Then we generate response embedding for both hidden units and features, and cluster the hidden units and features respectively to reveal the high-level knowledge captured by the models. 
-To facilitate case-based exploration, we use gradient-based techniques to measure the feature importance.  The gradients at all timestamps are calculated for all cases to measure the local importance of features. 
+\UC{To address these challenges, we propose MultiRNNExplorer, a visual analytics system to help domain experts understand RNNs in high-dimensional time-series forecasts from two aspects: model mechanism and feature importance. 
+To understanding model mechanism, we estimate the overall response from hidden units to features and generate response embedding for both hidden units and features.
+We then cluster the hidden units and features respectively to reveal the high-level knowledge captured by the models.}
+To measure the feature importance, we calculate the gradient for all features at all timestamps with respect to a given case.
+% To facilitate case-based exploration, we use gradient-based techniques to measure the feature importance.  The gradients at all timestamps are calculated for all cases to measure the local importance of features. 
 Then a visualization interface with coordinated views is designed, enabling the users to interactively explore the model behavior. 
-Specifically, we design a Cluster View (Fig.~\ref{fig:teaser}A) to visualize the hidden units' response to features. 
-The hidden units are visualized in a distribution chart and the features are visualized as a glyph. Then the Feature Importance View (Fig.~\ref{fig:teaser}C) summarizes the temporal importance of all features. Finally, the individual level behaviors of RNNs are visualized in a \UC{Individual View} (Fig.~\ref{fig:teaser}D) which visualizes the feature trend, cluster importance trend and the top features for each individual case.
+% Specifically, we design a Cluster View (Fig.~\ref{fig:teaser}A) to visualize the hidden units' response to features. 
+% The hidden units are visualized in a distribution chart and the features are visualized as a glyph. Then the Feature Importance View (Fig.~\ref{fig:teaser}C) summarizes the temporal importance of all features. Finally, the individual level behaviors of RNNs are visualized in a \UC{Individual View} (Fig.~\ref{fig:teaser}D) which visualizes the feature trend, cluster importance trend and the top features for each individual case.
 
 Our contributions can be summarized as follows:
-\begin{itemize}
-  \item A new method for estimating the neuron response to high-dimensional time-series data. 
-%   \zw{A main contribution? should mention this earlier.}
-  \item A visual analytics system that explores, interprets, and compares RNNs models in high-dimensional time-series forecast tasks. 
-%   \zw{more details. any new designs?}
-  \item Case studies using real-world datasets to demonstrate the effectiveness of the proposed system and interesting insights revealed from the case studies.
-% \UC{Removed according to Anna}. For example, in the training process, the models learn the \QM{most direct features in the first and then gradually learn the features which indirectly influence the forecast}.
-%   \zw{more details. what interesting insights?}.
+\setlist{nolistsep}
+\begin{itemize}[noitemsep]
+%   \itemsep0em 
+  \item \UC{A new method for estimating neuron response to multi-dimensional time-series data by measuring hidden unit response distribution on different value ranges of input features.}
+  \item A visual analytics system that help users to explore, interpret, and compare RNNs on multi-dimensional time-series data. 
+  \item Several case studies on air pollutant datasets to demonstrate the effectiveness of the proposed system and the insights revealed during exploration.
 \end{itemize}
 
 
