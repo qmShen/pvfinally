@@ -27,12 +27,15 @@ From the line chart, users can observe and compare the activation distribution p
 \textbf{Feature Glyph.}
 The right column of the Cluster View is the Feature Glyph component (Fig.~\ref{fig:cluster_design}C).
 Similar to the Hidden State Distribution, each row represents a feature cluster in which a glyph (Fig.~\ref{fig:cluster_design}D) represents a feature.
-As described in Sec.~\ref{section:application}, we define our usage scenario as air pollution forecasting.
-Each feature has three identifiers: the feature category, the direction, and the distance from the feature to the target location.
-The background color of the feature glyph cell encodes the feature category.
-We use a categorical color scheme to encode different categories, and users can find the color legend at the top of the Cluster View.
-\UC{In each feature glyph, the distance and direction to the target location are presented by a rectangle and a line segment with one end point at the center.}
-The angle of the direction bar encodes the direction, and the width of the distance rectangle represents the distance(Fig.~\ref{fig:cluster_design}D).
+\yh{This enables users to quickly identify different features and compare the common attributes of multiple features for analysis.}
+\yh{As described in Sec.~\ref{section:application}, we define our usage scenario as air pollution forecasting where each feature has three identifiers: the feature category, the direction, and the distance from the feature to the target location.}
+\yh{As a categorical feature, we first use the background color of the feature glyph cell to encode the feature category.
+Different hues encode different categories, and users can find the color legend at the top of the Cluster View.}
+\yh{To intuitively encode target location direction, we draw a line segment starting from the glyph center that has the same direction angle.
+We also draw a square in the glyph where its radius, which is an appropriate channel to encode numerical values, encodes the distance to the target location.}
+
+% In each feature glyph, the distance and direction to the target location are presented by a rectangle and a line segment with one end point at the center.
+% The angle of the direction bar encodes the direction, and the width of the distance rectangle represents the distance(Fig.~\ref{fig:cluster_design}D).
 
 \textbf{Interactions.}
 We also support various interactions to allow users to dynamically explore this view.

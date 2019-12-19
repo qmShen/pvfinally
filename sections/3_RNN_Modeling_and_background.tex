@@ -3,7 +3,7 @@
 \label{section:application}
 In this paper, we focus on a particular type of regression task on multi-dimensional time-series data: air pollutant forecast of \textbf{target pollutants} at \textbf{target locations}.
 We collaborate with a group of domain researchers who use RNNs to conduct air pollutant forecasting.
-Specifically, they choose 16 air quality monitoring stations in Hong Kong with the stations' locations as the \textbf{target locations} and select $PM_{2.5}$, $PM_{10}$, $NO_{2}$, $SO_{2}$, and $O_3$ as the \textbf{target pollutants}.
+Specifically, they choose 16 air quality monitoring stations in Hong Kong with the stations' locations as the \textbf{target locations} and select $PM_{2.5}$, $PM_{10}$, $NO_{2}$, $SO_{2}$, and $O_3$, \QM{the five air pollutants which effect the human's health the most including,} as the \textbf{target pollutants}. \QM{The ML models are trained to predict these target air pollutants at each station}.
 Though the RNNs can provide high accuracy, the researchers are more interested in understanding why the models make certain predictions so that they can decide whether to trust the models for decision making based on their domain knowledge.
 % \zw{needs more details here. analytical goals come too late. move here?}
 We thus develop MultiRNNExplorer to help the domain researchers explain the RNNs' behavior on their temporal multi-dimensional air pollutant dataset.
@@ -27,8 +27,8 @@ We thus develop MultiRNNExplorer to help the domain researchers explain the RNNs
 \subsection{Data Description}
 \label{section:datadescription}
 
-The dataset includes hourly observations of the air pollutant and meteorology data from different air quality monitoring stations in China from Jan. 01 2015 to Dec. 31 2018.
-The features are listed in Table ~\ref{table:feature_list}.
+The dataset includes hourly observations of the air pollutant and meteorology data from weather and air quality monitoring stations in Hong Kong from Jan. 01 2015 to Dec. 31 2018.
+The features are listed in Table~\ref{table:feature_list}.
 
 \begin{table}[h!]
 \centering
@@ -52,7 +52,7 @@ Similar to other work on air pollutant forecasts~\cite{zheng2015forecasting}, wh
 % \yh{Above sentences may be confusing...need discuss}
 Specifically, as shown in Fig.~\ref{fig:teaser}B, we divide the nearby regions into five non-overlapping rings centered at the targeted location with radii of 10km, 30km, 100km, 200km, and 300km.
 Each ring is further divided into 8 sectors with the same angle such that the whole area around the target location is partitioned into 40 sub-regions. 
-For each sub-region, we use the air pollutant and meteorology data observed by the monitoring stations located in the corresponding sub-region as the features.
+For each sub-region, we use the air pollutant and meteorology data observed by the monitoring stations located in the corresponding sub-region \QM{(including the 16 target stations)} as the features.
 If there are multiple monitoring stations in a sub-region, we aggregate their data and use mean values as the features.
 % The same features from the monitoring station located into a same region within a same time range(e.g. 1 hour) will be averaged by mean value of this region. 
 In this way, each feature can be identified as a triplet $(distance, direction, feature\_type)$; for example, $(10km, E, NO_{2})$ indicates $NO_{2}$ concentration observed at \textit{10km} away \textit{East} of the target location. 
@@ -68,16 +68,16 @@ RNNs take a sequence as input with fixed length $T$: $\{x_0, x_1,... x_{T-1}\}$ 
 % \yh{To me, above 2 sentences describe how we generate sequences from data and can be removed / or moved to the data description sec.. I feel it is not direcctly relevant to model description.}
 % and $x_{t}^k \in x_{t}$ is the value of $k^{th}$ at time-stamp $t$. Each dimension of $x$ are scaled in the range of [0, 1]. 
 A hidden state $h_t$ is updated according to the input of timestamp $t$ and previous hidden state $h_{t-1}$.
-\QM{In vanilla RNNs, the hidden states are updated by:} 
+In vanilla RNNs, the hidden states are updated by:
 \begin{equation} 
 h_t = \sigma(Wh_{t-1} + Vx_t)
 \end{equation}
 
-Where $W$ and $V$ are weight matrices and $\sigma$ is the $tanh$ function which constrains the output of the hidden states to $(-1, 1)$. We consider three types of architectures shown as Fig.~\ref{fig:model_type}. 
+Where $W$ and $V$ are weight matrices and $\sigma$ is the $tanh$ function which constrains the output of the hidden states to $(-1, 1)$. We consider \yh{two} types of architectures shown as Fig.~\ref{fig:model_type}. 
 \textbf{RNN}: the final timestamp hidden state is directly connected to the output layer (Fig.~\ref{fig:model_type}A). \textbf{RNN-Dense}: there are several dense layers between the final timestamp and output layer (Fig.~\ref{fig:model_type}B). 
 % In model of Fig.\ref{fig:model_type}A, the final time-stamp hidden state is directly connected to the output layer. For the model of Fig.\ref{fig:model_type}B, there are several dense layers between the final time-stamp and output layer. The model of Fig.\ref{fig:model_type}C has time-distributed dense layer between the RNN layer and output layer. In theory, the time-distributed layer can better capture the temporal dynamics\cite{teijeiro2017arrhythmia}.
 In addition to vanilla RNNs, we also consider two variants: GRU and LSTM, which mitigate the gradient vanishing issue and enable the models to memorize long-term information by adding the ``gating'' mechanism.
-
+\QM{In out application, these models will take the historical data discussed in Sec.~\ref{section:datadescription} as input and output the concentration of target pollutants in the future.}
 
 \begin{figure}[t]
 	\centering

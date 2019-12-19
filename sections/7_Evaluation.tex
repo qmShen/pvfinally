@@ -5,21 +5,22 @@ In this section, we demonstrate the effectiveness of MultiRNNExplorer in analyzi
 We use the air pollutant data between 2015 to 2017 to train the model and use 8,375 cases in 2018 as testing data for analysis. 
 % Notice that feature importance and hidden unit response are calculated on testing data,  
 % The testing dataset contains the 8,375 individual cases in the year 2018.
-The accuracy and hyper-parameters of different models are listed in Table~\ref{table:model_configuration}. 
+\QM{The models training are conducted on a workstation with 2 $\times$ Intel Xeon E5-2650 v4 CPUs and 4 $\times$ Nvidia Titan x (Pascal Architecture) 12GB GDDR5X graphics cards.}
+The hyper-parameters, \QM{average training time (seconds)} and accuracy of different models are listed in Table~\ref{table:model_configuration}. 
 We demonstrate our system to the domain expert and analyze the trained models on several tasks.
 
 \begin{table}[h!]
 \centering
-\caption{Configuration and performance of RNNs, including vanilla RNN, GRU, LSTM, and the RNNs with dense layer (e.g., RNN-Dense). The performance is evaluated by the mean square error (MSE) of $PM_{2.5}$; low MSE represents better performance.}
-\begin{tabular}{p{2cm}|p{1cm}|p{2cm}|p{2cm}} 
+\caption{Configuration and performance of RNNs, including vanilla RNN, GRU, LSTM, and the RNNs with dense layer (e.g., RNN-Dense). The performance is evaluated by the mean square error (MSE) of $PM_{2.5}$; low MSE represents better performance.\yh{need discussion}}
+\begin{tabular}{p{1.8cm}|p{0.5cm}|p{1.7cm}|p{0.5cm}|p{1.7cm}} 
  \hline
- Model & Size & Dense Layer & MSE ($PM_{2.5}$) \\ [0.5ex] 
+ Model & Size & Dense Layer & Time & MSE ($PM_{2.5}$) \\ [0.5ex] 
  \hline
-    Vanilla RNN&100&No&5.31 $\pm$ 0.98 \\
-    GRU&100&No&4.32 $\pm$ 0.51\\
-    LSTM&100&No&4.81 $\pm$ 0.31\\
-    GRU-Dense&100&3&4.25 $\pm$ 0.21\\
-    LSTM-Dense&100&3&4.53 $\pm$ 0.53\\
+    Vanilla RNN&100&No&364&5.31 $\pm$ 0.98 \\
+    GRU&100&No&1081&4.32 $\pm$ 0.51\\
+    LSTM&100&No&1377&4.81 $\pm$ 0.31\\
+    GRU-Dense&100&3&1387&4.25 $\pm$ 0.21\\
+    LSTM-Dense&100&3&1525&4.53 $\pm$ 0.53\\
 \hline
 \end{tabular}
 \label{table:model_configuration}

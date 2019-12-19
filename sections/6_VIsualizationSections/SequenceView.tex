@@ -25,33 +25,41 @@ Each line represents a feature and the line color encodes feature category the s
 The corresponding lines are highlighted when hovering on any feature glyph in the Cluster View or hovering on feature importance view. 
 % to enable users to focus on the features in the current context and avoid visual clutter.
 
-The middle component is the Cluster Importance Chart, which is a list of horizon bar charts that summarize how each feature group's gradient changes over time.
-Each feature group is represented as a \UC{horizon bar chart} and aligned vertically in the same order as the Cluster View.
-For a horizon bar chart, each bar represents the averaged gradient for the corresponding feature group at one time step. 
+% \yh{The middle component is the Cluster Importance Chart, which contains a list of bar charts that stack vertically to summarize how each feature group's gradient changes over time.}
+\yh{The middle component is the Cluster Importance Chart that summarizes how each feature group's gradient changes over time.
+As shown in Fig.~\ref{fig:individual_view}A$_2$, each feature group is represented as a horizontal bar chart and aligned vertically in the same order as the Cluster View.}
+For a single bar chart, each bar represents the averaged gradient for the corresponding feature group at one time step. 
 We use both the bar height and bar color to encode the gradient value.
-As shown in  Fig.\ref{fig:individual_view}A$_3$, the first visual channel to encode gradient value is bar height where a greater height indicates a larger gradient value.
-When the gradient value exceeds a certain limit, we clip the bar and overlay another darker bar with the same height as the clipped part at the same position for better vertical space efficiency.
-We have also considered other design choices such as a themeriver (Fig.\ref{fig:individual_view}B) in which each colored flow indicates a feature group. 
+\yh{The first visual channel to encode gradient value is bar height where a greater height indicates a larger gradient value.
+When the gradient value exceeds a certain limit, instead of further increasing the bar height, we overlay another darker bar where its height indicates the exceeding gradient value for better vertical space efficiency.}
+We have also considered other design choices such as a themeriver (Fig.~\ref{fig:individual_view}B) in which each colored flow indicates a feature group. 
 However, comparing different feature groups may be difficult and it requires more space when the gradient is large.
 Thus, we abandon this alternative choice and adopt the current design.
 
 \UC{
 Though the Cluster Importance Chart provides an overview of how each feature cluster's importance changes over time, users still need to link this component to the Cluster View to observe which features are considered important by the model.
 We design a Top Feature List to visualize the important features over time. 
-Our first design is shown in Fig.~\ref{fig:individual_view}D. where the top $N$ features ranked by importance are visualized as feature glyphs at each timestamp. 
-We draw links to connect glyphs that represent the same feature in consecutive time steps.
-However, this design leads to serious visual clutter due to link overlap when feature ranks are frequently changed over time. 
-To alleviate users' mental burden, we develop a new design as shown in Fig.~\ref{fig:individual_view}E.
+Our first design is shown in Fig.~\ref{fig:individual_view}D.
+\yh{The x-axis represents time and the y-axis represent feature importance rank.
+The top $N$ features at each time step are visualized as feature glyphs and are positioned vertically according to their importance. 
+We draw links to connect glyphs that represent the same feature in consecutive time steps to enable users tracking same features along time.}
+However, this design leads to serious visual clutter due to link overlap when feature ranks frequently change over time. 
+\yh{To alleviate users' mental burden in tracking same features and to reduce visual clutter, we develop another design alternative as shown in Fig.~\ref{fig:individual_view}E.}
 % We visualize the top $N$ features that have the largest average gradients over time. 
-Each feature is represented as a row and we draw its corresponding feature glyph at the timestamps when this feature is ranked in the top $N$ most important features. 
-To simplify this visual design, we position the feature glyph at the beginning of each row. 
-% As a feature has different gradients over time, the importance ranking of a feature can also vary at different steps.
-We then use two colored circles linked with gray lines to indicate at which time steps the corresponding feature is ranked in the top $N$ mostly important features.
+\yh{In this design, each feature is represented as a row and aligned vertically with a fixed position on y-axis.
+We draw its corresponding feature glyphs at the time steps where this feature is ranked among the top $N$ most important features.
+Thus, users can track a single feature's importance along time by observing how many feature glyphs are drawn on the corresponding rows.} 
+
+% \yh{To further simplify this visual design and reduce redundant information, we position the feature glyphs at the beginning of each row.} 
+\yh{To reduce redundant information, we further simplify this design (Fig.~\ref{fig:individual_view}A$_3$.)
+First, instead of drawing duplicate feature glyphs in a row, we draw a grey line segment to mark the time steps that the corresponding feature is among the top $N$ important features. 
+Two colored circles are positioned at the endpoints of a line segment to indicate the starting and ending time steps.
 The circle color is consistent with the feature glyph color.
+At last, we only draw a single feature glyph at the beginning of each row to indicate the corresponding feature.}
 To make the Top Feature List space efficient, we only show ten rows by default, and other features are collapsed as feature glyph rows as shown in the bottom at Fig.\ref{fig:individual_view}A$_3$.
 Users can click the glyph rows to select different features to analyze.
 }
 
-\UC{The three components enable users to observe which features are considered important by the model over time and how the importance is related to feature value changes.
+The three components enable users to observe which features are considered important by the model over time and how the importance is related to feature value changes.
 Users can also append multiple cells to the Sequence View to compare different sequences side by side. 
-When the number of cells becomes large, we use dbscan to cluster the similar individual cases by the fatten cluster importance(discussed in sec. \ref{section:feature_importance}) into one stacked cells with one randomly selected case as the representative case at the top of stack.}
+When the number of cells becomes large, we use dbscan to cluster the similar individual cases by the fatten cluster importance(discussed in Sec.~\ref{section:feature_importance}) into one stacked cells with one randomly selected case as the representative case at the top of stack.

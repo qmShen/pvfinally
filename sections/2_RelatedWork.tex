@@ -39,11 +39,11 @@ They usually assign each feature an importance score to indicate how it impacts 
 One classical work is Partial Dependence Plot (PDP)~\cite{friedman2001greedy}, which depicts how feature value changes affect predictions.
 A PDP is usually visualized as a line \textbf{}chart in which the x-axis represents feature values and the y-axis represents prediction possibilities (partial dependence scores).
 For each feature, its partial dependence scores are usually calculated by iteratively fixing the feature input of all the data points to a certain value and getting the average prediction.
-One recent work, SHAP~\cite{lundberg2017unified}, also calculates feature attribution, but from a local perspective.
+A recent work, SHAP~\cite{lundberg2017unified}, also calculates feature attribution, but from a local perspective.
 SHAP is based on the ideas of Shapley Values from game theory, which calculates the feature contribution of a data instance by comparing it with a set of reference data points.
 Compared with global solutions, it is more consistent and locally accurate.
-One major limitation of feature contribution methods is is that they are computationally expensive.
-In this work, we alleviate this problem by adopting a pre-processing stage before interactive exploration.
+One major limitation of feature contribution methods is is that they are computationally expensive. 
+\QMQuestion{In this work, we alleviate this problem by adopting a pre-processing stage before interactive exploration.}
 
 Apart from the above work that focuses on describing the input-output relationship,
 some work focuses on understanding and analyzing the internal working mechanism of RNNs, especially the hidden layer behaviors, by utilizing visualization techniques.
@@ -52,6 +52,6 @@ LSTMVis~\cite{strobelt2018lstmvis} further analyzed and compared the activation 
 Ming et al. developed RNNVis~\cite{ming2017understanding} to depict the co-clustering patterns between hidden states and input words.
 There is also some other work that focuses on a particular model or domain.
 For example, Seq2Seq-Vis~\cite{strobelt2019s} mainly focuses on the sequence-to-sequence model and RetainVis~\cite{kwon2019retainvis} enables experts to analyze electronic medical data using a RNN model.
-Though these methods show how the relationships between hidden units and input data change over time, they fail to capture the importance evolution of each individual input dimension, which prevents them being adopted in critical areas such as finance and environmental factor forecasting.
+Though these methods show how the relationships between hidden units and input data change over time, they fail to capture the importance evolution of each individual input dimension, which prevents them from being adopted in critical areas such as finance and environmental factor forecasting.
 We aim to solve this problem by revealing the activation sensitivity of hidden units to different features and highlighting what features mostly affect the final prediction the most over time.
 

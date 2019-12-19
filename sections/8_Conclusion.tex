@@ -14,7 +14,9 @@ In Projection View, thousands of individual cases need to be visualized and caus
 % Even though we provide interactions such as zoom and pan which enable the users to iteratively explore the cases, it is still difficult for the users to clearly observe the overview of the case similarity.  
 In our case, more than 8000 points are visualized. 
 If data size keeps increasing, we may also apply other advanced projection techniques\cite{van2017visual, pezzotti2016hierarchical} for Projection View. 
-The individual view also has such a problem: it is easy for users to brush hundreds of individual cases from Projection View and generate tens of clusters. Due to the limited screen size, our current design allows 9 groups of individual cases to be shown at the same time and uses the scroll bar to enable the observation of more groups.
+\yh{In addition, the context $+$ focus technique can also be applied for users to first obtain an overview of data then explore the regions of interests to reduce visual clutter and mental burden.}
+The Individual View also has such a problem: it is easy for users to brush hundreds of individual cases from Projection View and generate tens of clusters. 
+Due to the limited screen size, our current design allows 9 groups of individual cases to be shown at the same time and uses the scroll bar to enable the observation of more groups.
 % Throughout the system, the feature type is encoded by categorical colors. Because humans suffer perception issues for more than 10 categorical colors, we manually choose similar colors for highly correlated features (for example, $PM_{2.5}$ and $PM_{10}$ are encoded by light green and dark green). For more features, we may need only a few colors for the features of interest and encode other features by the same color (for example, gray). 
 
 \textbf{Generalization.}

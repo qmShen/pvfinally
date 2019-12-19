@@ -102,7 +102,7 @@ Users can also manually choose different clustering algorithms and change the nu
 
 \begin{figure}[t]
 	\centering
-	\includegraphics[width=0.45\textwidth]{pictures/methods/cluster_parameters.png}
+	\includegraphics[width=0.45\textwidth]{pictures/methods/cluster_parameters.pdf}
 	\vspace{-3mm}
 	\caption{Cluster score with different cluster number. Left: feature cluster. Right: hidden unit cluster. The horizontal axis represents the cluster number, the vertical axis represents the cluster score. 
 % 	A good choice of the cluster method and cluster number is K-means and 12 for the feature cluster, Agglomerative Clustering (AC) and 10 for the hidden units cluster.
@@ -138,4 +138,4 @@ However, for input $x$ with the length of $T$,  the total number of all feature 
     W(y^l, H^i_t) =\displaystyle\sum_{x^k_t \in H^i_t}|w(y^l, x^k_t)|
  \end{multlined}
 \end{equation}
-\QM{Thus, the size of the cluster importance for all timestamps is $C \times T$ where $C$ is the number of clusters ($C<N$)}. 
+Thus, the size of the cluster importance for all timestamps is $C \times T$ where $C$ is the number of clusters ($C<N$). 

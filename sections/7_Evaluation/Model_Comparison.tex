@@ -12,7 +12,7 @@
 
 \subsubsection{Model Mechanism}
 This case study is conducted to understand what RNN models learn and to compare different models trained for air pollutant forecasting. 
-With MultiRNNExplorer, we are able to select models at any epoch. Fig.~\ref{fig:teaser}A shows the Cluster View of GRU-Dense; by observing the cluster of features, we find that the features with same feature types are likely to cluster together such as the \textit{\color{RHColor}{Relative Humidity}} and \textit{\color{DPColor}{Dew-point}}, are exactly grouped into two separated clusters shown as Fig.~\ref{fig:teaser}A$_4$.
+With MultiRNNExplorer, we are able to select models at any epoch. Fig.~\ref{fig:teaser}A shows the Cluster View of GRU-Dense; by observing the cluster of features, \QM{we find that the features with same feature types are likely to cluster together such as the \textit{\color{RHColor}{Relative Humidity}} and \textit{\color{Temperature}{Temperature}}, are exactly grouped into two separated clusters shown as Fig.~\ref{fig:teaser}A$_4$ and A$_5$.}
 Moreover, we find that the $\color{PM25Color}{PM_{2.5}}$ and $\color{PM10Color}{PM_{10}}$ are always clustered together as shown in Fig.~\ref{fig:teaser}A$_1$ and Fig.~\ref{fig:teaser}A$_2$.
 The domain expert explains that $\color{PM25Color}{PM_{2.5}}$ and $\color{PM10Color}{PM_{10}}$ are highly correlated because they are always generated together.
 % On the other hand, we notice that all the features on \color{PM25Color}{$PM_{2.5}$} and \color{PM10Color}{$PM_{10}$} are also grouped by the distance: Fig. \ref{fig:teaser}A$_1$ and A$_2$ show that the features far away from (200km and 300km) or nearby (closer than 30km) the target location are clustered in different groups. 

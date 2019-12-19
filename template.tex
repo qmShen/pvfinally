@@ -113,7 +113,7 @@
   \includegraphics[width=0.95\linewidth]{pictures/teaser.pdf}
   \caption{
   MultiRNNExplorer contains multiple coordinated views to support exploring and understanding RNNs' behaviors on multi-dimensional time-series data, especially on hidden unit response and feature importance.
-  The Configuration Panel (B) allows users to select a RNN models and configure parameters. 
+  The Configuration Panel (B) allows users to select an RNN model and configure parameters. 
   To reveal model mechanism, the Cluster View (A) summarizes the hidden unit clusters' response to feature clusters, and the Feature Importance View (C) summarizes the temporal importance of input features. 
   The Projection View (E) displays a data overview, allowing users to identify and select sequence instances of interest for further analysis. 
   The selected instances will be shown by the Individual View (D). 
@@ -161,10 +161,11 @@ We demonstrate the effectiveness of our approach with case studies using air pol
 \definecolor{orange}{RGB}{242, 101, 34}
 \definecolor{purple}{RGB}{197,27,125}
 
-\newcommand{\QM}[1]{{\color{black}{#1}}}
+\newcommand{\QM}[1]{{\color{blue}{#1}}}
+\newcommand{\QMQuestion}[1]{{\color{purple}{#1}}}
 % \newcommand{\QM}[1]{{\color{red}{#1}}}
 \newcommand{\zw}[1]{{\color{blue}{#1}}}
-\newcommand{\yh}[1]{{\color{cyan}{#1}}}
+\newcommand{\yh}[1]{{\color{red}{#1}}}
 \newcommand{\todo}[1]{\textcolor{orange}{[#1]}}
 % \newcommand{\UC}[1]{{\color{purple}{#1}}}
 \newcommand{\UC}[1]{{\color{black}{#1}}}
@@ -184,6 +185,7 @@ We demonstrate the effectiveness of our approach with case studies using air pol
 \definecolor{RHColor}{RGB}{24,166,149}
 \definecolor{SLPColor}{RGB}{174,174,30}
 \definecolor{DPColor}{RGB}{100,47,203}
+\definecolor{Temperature}{RGB}{189,57,56}
 \definecolor{SPColor}{RGB}{139,7,7}
 \definecolor{NO2Color}{RGB}{51,102,204}
 \definecolor{SO2Color}{RGB}{76,183,215}
@@ -223,8 +225,7 @@ We demonstrate the effectiveness of our approach with case studies using air pol
 
 %% if specified like this the section will be committed in review mode
 \acknowledgments{
-The authors wish to thank A, B, and C. This work was supported in part by
-a grant from XYZ.}
+This research is supported by the HSBC 150th Anniversary Charity Programme through the PRAISE-HK project.}
 
 %\bibliographystyle{abbrv}
 \bibliographystyle{abbrv-doi}

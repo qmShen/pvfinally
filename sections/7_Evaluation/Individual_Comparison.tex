@@ -9,15 +9,15 @@ We conduct this case study to understand the model behavior in different seasons
 In this case, we choose the GRU-Dense model and $PM_{2.5}$ as the target feature.
 We switch the time ranges to filter the cases in winter, spring, summer, and fall. 
 To highlight the selected cases, the unfiltered cases are then colored in light grey as shown in Fig.~\ref{fig:seasonal_feature}. 
-We found that the fall and winter cases are clustered at the left-bottom part (Fig.~\ref{fig:seasonal_feature}A,D). 
-The cases in summer are located at the right-top part (Fig.~\ref{fig:seasonal_feature}C), while the cases in spring are distributed in different locations compared with the other three seasons (Fig.~\ref{fig:seasonal_feature}B).
-Despite some outliers exist in the Projection View as shown in Fig.~\ref{fig:seasonal_feature}A$_1$,C$_1$, the model is able to capture the complex seasonal features in data based on above observation. 
+We found that the fall and winter cases are clustered at the left-bottom part (Fig.~\ref{fig:seasonal_feature}A and D). 
+The cases in summer are located at the right-top part (Fig.~\ref{fig:seasonal_feature}C), while the cases in spring(Fig.~\ref{fig:seasonal_feature}B) are distributed in different locations compared with the other three seasons .
+Despite some outliers exist in the Projection View as shown in Fig.~\ref{fig:seasonal_feature}A$_1$ and C$_1$, the model is able to capture the complex seasonal features in data based on above observation. 
 
 \subsubsection{Explore the model behavior in winter}
 
 Furthermore, we notice that several cases indicate that the target location has a serious $PM_{2.5}$ pollutant in winter. 
 In the Projection View, we first select the time ranges of January 2018 (Fig.~\ref{fig:winter_exploration}A) to highlight all the cases within this time range (Fig.~\ref{fig:winter_exploration}B). 
-We notice there are many cases are colored in dark red, which indicates that these cases suffer a heavy $PM_{2.5}$ pollutant (Fig.~\ref{fig:winter_exploration}C1).
+We notice there are many cases are colored in dark red, which indicates that these cases suffer a heavy $PM_{2.5}$ pollutant (Fig.~\ref{fig:winter_exploration}C$_1$).
 We select these cases to explore their feature importance distributions and rankings.
 The top ten important features are \textit{\color{WINDColor}{Wind Speed}}, $\color{PM25Color}{PM_{2.5}}$ and $\color{PM10Color}{PM_{10}}$.
 The selected cases also appear in the Individual Views; all these cases form one stack, and we choose one of them as an example as shown in Fig.~\ref{fig:winter_exploration}E$_1$. 
