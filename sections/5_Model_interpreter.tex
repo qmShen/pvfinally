@@ -8,7 +8,7 @@ These two approaches are complementary to each other in enabling users'  underst
 
 \subsection{Relationships between Hidden States and Features}
 
-To measure how feature changes can affect hidden states (\textbf{T4}), one common approach is perturbing feature values and measuring how the hidden state distribution changes compared with the original data.
+To measure how feature changes can affect hidden states (\textbf{T4}), one common approach is perturbating feature values and measuring how the hidden state distribution changes compared with the original data.
 However, perturbation-based methods are usually time-consuming and not applicable when different features are correlated.
 Inspired by~\cite{sun2015deeply}, we adopt another method that directly compares the hidden state distributions of different feature value ranges.
 This approach is computationally efficient and provides a good approximation for whether a hidden state is sensitive to feature changes.
@@ -112,7 +112,6 @@ Users can also manually choose different clustering algorithms and change the nu
 \end{figure}
 
 The clustering results can be modeled as bipartite graph $\mathbb{G} = (\mathbb{V}_H, \mathbb{V}_F, \mathbb{E})$, where $\mathbb{V}_H$ is the hidden unit cluster set and $\mathbb{V}_F$ is the feature cluster set. $\mathbb{E}$ indicates the weighted edge set between unit clusters and input dimension clusters with the weight of $E_{H,F} = \displaystyle\sum_{h \in H}\displaystyle\sum_{f \in F}RS(h, f)$ where $H \in \mathbb{V}_H$ and $F \in \mathbb{V}_F$. 
-
 This bipartite graph of features and hidden units can help users understand the information captured by different hidden unit clusters by examining which feature clusters have strong relationships with them.
 
 

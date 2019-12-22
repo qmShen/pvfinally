@@ -15,9 +15,9 @@ We develop the Individual View for users to explore and compare the different in
 \end{figure}
 
 % cell -> card
-\UC{The selected individual cases are visualized as several stacks of \UC{cell} as in Fig.~\ref{fig:individual_view}A.
+The selected individual cases are visualized as several stacks of \UC{cell} as in Fig.~\ref{fig:individual_view}A.
 Each cell consists of three components: the Feature Trend Chart (Fig.~\ref{fig:individual_view}A$_1$), the Cluster Importance Chart (Fig.~\ref{fig:individual_view}A$_2$), and the Top Feature List (Fig.~\ref{fig:individual_view}A$_3$).
-All these three components share the same x-axis which represents the time where time steps increase from left to right.}
+All these three components share the same x-axis which represents the time where time steps increase from left to right.
 
 Feature Trend Chart is a multi-line chart that depicts how different features' values change over time. 
 The y-axis represents normalized feature values where the feature value increases from bottom to top ranging between 0 and 1.
@@ -39,11 +39,11 @@ Thus, we abandon this alternative choice and adopt the current design.
 \UC{
 Though the Cluster Importance Chart provides an overview of how each feature cluster's importance changes over time, users still need to link this component to the Cluster View to observe which features are considered important by the model.
 We design a Top Feature List to visualize the important features over time. 
-Our first design is shown in Fig.~\ref{fig:individual_view}D.
-\yh{The x-axis represents time and the y-axis represent feature importance rank.
+Our first design is shown in Fig.~\ref{fig:individual_view}D. 
+\yh{The x-axis represents time and the y-axis represents feature importance rank.
 The top $N$ features at each time step are visualized as feature glyphs and are positioned vertically according to their importance. 
 We draw links to connect glyphs that represent the same feature in consecutive time steps to enable users tracking same features along time.}
-However, this design leads to serious visual clutter due to link overlap when feature ranks frequently change over time. 
+However, in the discussion with domain experts, this design leads to serious visual clutter due to link overlap when feature ranks frequently change over time. 
 \yh{To alleviate users' mental burden in tracking same features and to reduce visual clutter, we develop another design alternative as shown in Fig.~\ref{fig:individual_view}E.}
 % We visualize the top $N$ features that have the largest average gradients over time. 
 \yh{In this design, each feature is represented as a row and aligned vertically with a fixed position on y-axis.

@@ -3,7 +3,7 @@
 \label{section:introduction}
 Recurrent neural networks (RNNs) have been widely applied in various natural language processing (NLP) tasks such as machine translation and sentiment analysis. 
 % Compared with other network architectures like fully connected networks, RNNs can effectively model sequential data.
-Benefiting from the capacity to model sequential data, RNNs have been extended to other domains of sequential data beyond NLP, such as weather forecast\cite{xingjian2015convolutional, cao2012forecasting, shi2017deep} and air pollutant prediction\cite{oprea2016neural, zhou2017prediction, li2017long}. 
+Benefiting from the capacity to model sequential data, RNNs have been extended to other domains of sequential data beyond NLP, such as weather forecast\cite{xingjian2015convolutional} and air pollutant prediction\cite{oprea2016neural}. 
 % and even stock market\cite{kim2018forecasting,nelson2017stock,akita2016deep}.
 Compared to NLP tasks that take latent embeddings as inputs, the input features in these applications are usually multi-dimensional time series where each dimension has its own semantic meaning.
 For example, in air pollutant forecast, RNN models are widely adopted by domain experts where input sequences are hourly recorded series of high-dimensional pollutants (\emph{e.g.}, $SO_{2}$) and meteorology features (\emph{e.g.}, \textit{wind speed}).
@@ -34,8 +34,8 @@ On the other hand, the experts also aim to identify the patterns that have not b
 % However, existing techniques cannot be directly applied in RNNs for high-dimensional time-series forecasts.
 % \UC{Merge with the next paragraph}
 
-Existing work on RNN interpretation such as LSTMVis~\cite{strobelt2018lstmvis} and RNNVis~\cite{ming2017understanding} mainly focus on NLP tasks. 
-Both of these two works interpret hidden units by providing their relevant words as language contexts.
+Existing work on RNN interpretation such as LSTMVis~\cite{strobelt2018lstmvis} and RNNVis~\cite{ming2017understanding} mainly focuses on NLP tasks. 
+Both of these two work interprets hidden units by providing their relevant words as language contexts.
 However, existing techniques cannot be directly applied in RNNs for high-dimensional time-series forecasts.
 First, the high dimensionality of the input sequence makes it difficult to discover relationships between features and hidden states. 
 Since different features at various timestamps are correlated, traditional techniques are not applicable as they are not designed to reveal how feature importance changes over time, which hinders the domain experts' ability to analyze if the prediction is consistently generated.
@@ -53,11 +53,11 @@ This requires the visualization methods to have good scalability in order to dem
 % We also propose a sequence view (\zw{Fig.~\ref{fig:teaser}(xxx)?}) to summarize and compare the temporal hidden unit and feature importance along the sequences with good scalability.
 
 \UC{To address these challenges, we propose MultiRNNExplorer, a visual analytics system to help domain experts understand RNNs in high-dimensional time-series forecasts from two aspects: model mechanism and feature importance. 
-To understanding model mechanism, we estimate the overall response from hidden units to features and generate response embedding for both hidden units and features.
+To understand model mechanism, we estimate the overall response from hidden units to features and generate response embedding for both hidden units and features.
 We then cluster the hidden units and features respectively to reveal the high-level knowledge captured by the models.}
 To measure the feature importance, we calculate the gradient for all features at all timestamps with respect to a given case.
 % To facilitate case-based exploration, we use gradient-based techniques to measure the feature importance.  The gradients at all timestamps are calculated for all cases to measure the local importance of features. 
-Then a visualization interface with coordinated views is designed, enabling the users to interactively explore the model behavior. 
+We then design a visualization interface with coordinated views, enabling users to interactively explore model behaviors. 
 % Specifically, we design a Cluster View (Fig.~\ref{fig:teaser}A) to visualize the hidden units' response to features. 
 % The hidden units are visualized in a distribution chart and the features are visualized as a glyph. Then the Feature Importance View (Fig.~\ref{fig:teaser}C) summarizes the temporal importance of all features. Finally, the individual level behaviors of RNNs are visualized in a \UC{Individual View} (Fig.~\ref{fig:teaser}D) which visualizes the feature trend, cluster importance trend and the top features for each individual case.
 
@@ -66,7 +66,7 @@ Our contributions can be summarized as follows:
 \begin{itemize}[noitemsep]
 %   \itemsep0em 
   \item \UC{A new method for estimating neuron response to multi-dimensional time-series data by measuring hidden unit response distribution on different value ranges of input features.}
-  \item A visual analytics system that help users to explore, interpret, and compare RNNs on multi-dimensional time-series data. 
+  \item A visual analytics system that helps users to explore, interpret, and compare RNNs on multi-dimensional time-series data. 
   \item Several case studies on air pollutant datasets to demonstrate the effectiveness of the proposed system and the insights revealed during exploration.
 \end{itemize}
 

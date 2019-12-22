@@ -1,9 +1,9 @@
 % $Id: template.tex 11 2007-04-03 22:25:53Z jpeltier $
 
 % \documentclass{vgtc}                          % final (conference style)
-\documentclass[review]{vgtc}                 % review
+%\documentclass[review]{vgtc}                 % review
 %\documentclass[widereview]{vgtc}             % wide-spaced review
-%\documentclass[preprint]{vgtc}               % preprint
+\documentclass[preprint]{vgtc}               % preprint
 %\documentclass[electronic]{vgtc}             % electronic version
 
 %% Uncomment one of the lines above depending on where your paper is
@@ -94,13 +94,25 @@
 %%\and Martha Stewart\thanks{e-mail:martha.stewart@marthastewart.com}}
 %%\affiliation{\scriptsize Martha Stewart Enterprises \\ Microsoft Research}
 
+\author{Qiaomu Shen$^1$\thanks{e-mail: qshen@ust.hk}, Yanhong Wu$^2$\thanks{e-mail: yanwu@visa.com}, Yuzhe Jiang$^1$\thanks{e-mail: yuzhe.jiang@ust.hk}, Wei Zeng$^3$\thanks{e-mail: wei.zeng@siat.ac.cn}, Alexis K H LAU$^1$\thanks{e-mail: alau@ust.hk}, Anna Vianova$^4$\thanks{e-mail: A.Vilanova@tudelft.nl}, and Huamin Qu$^1$\thanks{e-mail: huamin@ust.hk}}
+% \author{Qiaomu Shen$^*$, Yanhong Wu$^2$, Yuzhe Jiang$^1$, Wei Zeng$^3$, Alexis K H LAU$^1$, Anna Vianova$^4$, and Huamin Qu$^1$}
+\affiliation{\scriptsize Hong Kong University of Science and Technology$^1$, Visa Research$^2$, \\ Shenzhen Institutes of Advanced Technology$^3$, Delft University of Technology$^4$}
 %% Author and Affiliation (multiple authors with multiple affiliations)
-\author{Roy G. Biv\thanks{e-mail: roy.g.biv@aol.com}\\ %
-        \scriptsize Starbucks Research %
-\and Ed Grimley\thanks{e-mail: ed.grimley@aol.com}\\ %
-     \scriptsize Grimley Widgets, Inc. %
-\and Martha Stewart\thanks{e-mail: martha.stewart@marthastewart.com}\\ %
-     \parbox{1.4in}{\scriptsize \centering Martha Stewart Enterprises \\ Microsoft Research}}
+% \author{Qiaomu Shen\thanks{e-mail: qshen@ust.hk}\\ %
+%         \scriptsize the Hong Kong University of Science and Technology %
+% \and Yanhong Wu\thanks{e-mail: yanwu@visa.com}\\ %
+%      \scriptsize Visa Research %
+% \and Yuzhe Jiang\thanks{e-mail: yuzhe.jiang@ust.hk}\\ %
+%      \scriptsize the Hong Kong University of Science and Technology  %
+% \and Wei Zeng\thanks{e-mail: wei.zeng@siat.ac.cn}\\ %
+%      \scriptsize Shenzhen Institutes of Advanced Technology %
+% \and Alexis K H LAU\thanks{e-mail: alau@ust.hk}\\ %
+%      \scriptsize the Hong Kong University of Science and Technology %
+% \and Anna Vilanova\thanks{e-mail: A.Vilanova@tudelft.nl}\\ %
+%      \scriptsize Delft University of Technology %
+% \and Huamin Qu\thanks{e-mail: huamin@ust.hk}\\ %
+%     \scriptsize the Hong Kong University of Science and Technology %
+%      }
 
 %% A teaser figure can be included as follows, but is not recommended since
 %% the space is now taken up by a full width abstract.
@@ -108,18 +120,18 @@
 %  \includegraphics[width=1.5in]{sample.eps}
 %  \caption{Lookit! Lookit!}
 %}
-\teaser{
-  \centering
-  \includegraphics[width=0.95\linewidth]{pictures/teaser.pdf}
-  \caption{
-  MultiRNNExplorer contains multiple coordinated views to support exploring and understanding RNNs' behaviors on multi-dimensional time-series data, especially on hidden unit response and feature importance.
-  The Configuration Panel (B) allows users to select an RNN model and configure parameters. 
-  To reveal model mechanism, the Cluster View (A) summarizes the hidden unit clusters' response to feature clusters, and the Feature Importance View (C) summarizes the temporal importance of input features. 
-  The Projection View (E) displays a data overview, allowing users to identify and select sequence instances of interest for further analysis. 
-  The selected instances will be shown by the Individual View (D). 
-  } 
-  \label{fig:teaser}
-}
+% \teaser{
+%   \centering
+%   \includegraphics[width=0.95\linewidth]{pictures/teaser.pdf}
+%   \caption{
+%   MultiRNNExplorer contains multiple coordinated views to support exploring and understanding RNNs' behaviors on multi-dimensional time-series data, especially on hidden unit response and feature importance.
+%   The Configuration Panel (B) allows users to select an RNN model and configure parameters. 
+%   To reveal model mechanism, the Cluster View (A) summarizes the hidden unit clusters' response to feature clusters, and the Feature Importance View (C) summarizes the temporal importance of input features. 
+%   The Projection View (E) displays a data overview, allowing users to identify and select sequence instances of interest for further analysis. 
+%   The selected instances will be shown by the Individual View (D). 
+%   } 
+%   \label{fig:teaser}
+% }
 %% Abstract section.
 \abstract{
 Recent attempts at utilizing visual analytics to interpret Recurrent Neural Networks (RNNs) mainly focus on natural language processing (NLP) tasks that take symbolic sequences as input.
@@ -161,11 +173,20 @@ We demonstrate the effectiveness of our approach with case studies using air pol
 \definecolor{orange}{RGB}{242, 101, 34}
 \definecolor{purple}{RGB}{197,27,125}
 
-\newcommand{\QM}[1]{{\color{blue}{#1}}}
-\newcommand{\QMQuestion}[1]{{\color{purple}{#1}}}
-% \newcommand{\QM}[1]{{\color{red}{#1}}}
-\newcommand{\zw}[1]{{\color{blue}{#1}}}
-\newcommand{\yh}[1]{{\color{red}{#1}}}
+%---------------------------------------------------
+
+\newcommand{\QM}[1]{{\color{black}{#1}}}
+\newcommand{\QMQuestion}[1]{{\color{black}{#1}}}
+\newcommand{\zw}[1]{{\color{black}{#1}}}
+\newcommand{\yh}[1]{{\color{black}{#1}}}
+
+% ---------------------------------------------------
+% \newcommand{\QM}[1]{{\color{blue}{#1}}}
+% \newcommand{\QMQuestion}[1]{{\color{blue}{#1}}}
+% \newcommand{\zw}[1]{{\color{blue}{#1}}}
+% \newcommand{\yh}[1]{{\color{blue}{#1}}}
+% ---------------------------------------------------
+
 \newcommand{\todo}[1]{\textcolor{orange}{[#1]}}
 % \newcommand{\UC}[1]{{\color{purple}{#1}}}
 \newcommand{\UC}[1]{{\color{black}{#1}}}
@@ -202,7 +223,6 @@ We demonstrate the effectiveness of our approach with case studies using air pol
 \firstsection{Introduction}
 
 \maketitle
-
 %% \section{Introduction} %for journal use above \firstsection{..} instead
 
 
@@ -225,7 +245,7 @@ We demonstrate the effectiveness of our approach with case studies using air pol
 
 %% if specified like this the section will be committed in review mode
 \acknowledgments{
-This research is supported by the HSBC 150th Anniversary Charity Programme through the PRAISE-HK project.}
+We thank all the reviewers for their constructive comments. This research is supported in part by the HSBC 150th Anniversary Charity Programme through the PRAISE-HK project (Grant No.HKBF17RG0) and National Natural Science Foundation of China (Grant No.61802388).}
 
 %\bibliographystyle{abbrv}
 \bibliographystyle{abbrv-doi}

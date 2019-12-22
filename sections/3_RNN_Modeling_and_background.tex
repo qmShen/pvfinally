@@ -3,8 +3,8 @@
 \label{section:application}
 In this paper, we focus on a particular type of regression task on multi-dimensional time-series data: air pollutant forecast of \textbf{target pollutants} at \textbf{target locations}.
 We collaborate with a group of domain researchers who use RNNs to conduct air pollutant forecasting.
-Specifically, they choose 16 air quality monitoring stations in Hong Kong with the stations' locations as the \textbf{target locations} and select $PM_{2.5}$, $PM_{10}$, $NO_{2}$, $SO_{2}$, and $O_3$, \QM{the five air pollutants which effect the human's health the most including,} as the \textbf{target pollutants}. \QM{The ML models are trained to predict these target air pollutants at each station}.
-Though the RNNs can provide high accuracy, the researchers are more interested in understanding why the models make certain predictions so that they can decide whether to trust the models for decision making based on their domain knowledge.
+Specifically, they choose 16 air quality monitoring stations in Hong Kong with the stations' locations as the \textbf{target locations} and select $PM_{2.5}$, $PM_{10}$, $NO_{2}$, $SO_{2}$, and $O_3$, \QM{the five air pollutants which effect the human's health the most}, as the \textbf{target pollutants}. \QM{The ML models are trained to predict these target air pollutants at each station}.
+Though the RNNs can provide high accuracy, researchers are more interested in understanding why models make certain predictions so that they can decide whether to trust the models for decision making.
 % \zw{needs more details here. analytical goals come too late. move here?}
 We thus develop MultiRNNExplorer to help the domain researchers explain the RNNs' behavior on their temporal multi-dimensional air pollutant dataset.
 
@@ -27,7 +27,7 @@ We thus develop MultiRNNExplorer to help the domain researchers explain the RNNs
 \subsection{Data Description}
 \label{section:datadescription}
 
-The dataset includes hourly observations of the air pollutant and meteorology data from weather and air quality monitoring stations in Hong Kong from Jan. 01 2015 to Dec. 31 2018.
+The dataset includes hourly observations of the air pollutant and meteorology data from weather and air quality monitoring stations in Hong Kong from Jan. 01, 2015 to Dec. 31, 2018.
 The features are listed in Table~\ref{table:feature_list}.
 
 \begin{table}[h!]
@@ -62,7 +62,7 @@ In this way, the data within a time peroid can be represented as a multi-dimensi
 
 \subsection{Models Description}
 \label{section:model_description}
-RNNs take a sequence as input with fixed length $T$: $\{x_0, x_1,... x_{T-1}\}$ and predict the value at timestamps equal to or greater than $T$, where $x_{t} \in \mathbb R^{m}$. 
+RNNs take a sequence as input with fixed length $T$: $\{x_0, x_1,..., x_{T-1}\}$ and predict the value at timestamps equal to or greater than $T$, where $x_{t} \in \mathbb R^{m}$. 
 % To train and test the model, we use a sliding-window method with the window size between 6 and 48 to gradually scan all time-series data.
 % \UC{So in the testing process, the input data $x$ will be read $T$ times and generate $T$ outputs from the hidden units.}
 % \yh{To me, above 2 sentences describe how we generate sequences from data and can be removed / or moved to the data description sec.. I feel it is not direcctly relevant to model description.}
@@ -77,7 +77,7 @@ Where $W$ and $V$ are weight matrices and $\sigma$ is the $tanh$ function which 
 \textbf{RNN}: the final timestamp hidden state is directly connected to the output layer (Fig.~\ref{fig:model_type}A). \textbf{RNN-Dense}: there are several dense layers between the final timestamp and output layer (Fig.~\ref{fig:model_type}B). 
 % In model of Fig.\ref{fig:model_type}A, the final time-stamp hidden state is directly connected to the output layer. For the model of Fig.\ref{fig:model_type}B, there are several dense layers between the final time-stamp and output layer. The model of Fig.\ref{fig:model_type}C has time-distributed dense layer between the RNN layer and output layer. In theory, the time-distributed layer can better capture the temporal dynamics\cite{teijeiro2017arrhythmia}.
 In addition to vanilla RNNs, we also consider two variants: GRU and LSTM, which mitigate the gradient vanishing issue and enable the models to memorize long-term information by adding the ``gating'' mechanism.
-\QM{In out application, these models will take the historical data discussed in Sec.~\ref{section:datadescription} as input and output the concentration of target pollutants in the future.}
+\QM{In our application, these models take the historical data discussed in Sec.~\ref{section:datadescription} as input and output the predicted concentration of target pollutants in the future.}
 
 \begin{figure}[t]
 	\centering

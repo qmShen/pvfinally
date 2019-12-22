@@ -13,7 +13,7 @@ Another finding is that in the $5^{th}$ epoch, we observe that only the features
 The domain experts indicate that the $PM_{2.5}$ and $PM_{10}$ at nearby locations are the most intuitive features to forecast $PM_{2.5}$ ($PM_{10}$ and $PM_{2.5}$ are always highly correlated).
 Moreover, the last time step is very important because it is the closest one to the final prediction. 
 Based on these observations, we infer that the features that are directly related with the targeted air pollutant are considered important in the early stage of the training process.
-After more epochs, the model starts to learn other features that may indirectly influence the forecast, such as the \textit{\color{WINDColor}{Wind Speed}} and other pollutants ($\color{SO2Color}{SO_2}$ or $\color{NO2Color}{NO_2}$) (shown as Fig.~\ref{fig:evolution_epochs}B, 20$^{th}$,200$^{th}$ epochs). 
+After more epochs, the model starts to learn other features that may indirectly influence the forecast, such as the \textit{\color{WINDColor}{Wind Speed}} and other pollutants ($\color{SO2Color}{SO_2}$) shown as Fig.~\ref{fig:evolution_epochs}B, 20$^{th}$,200$^{th}$ epochs. 
 
 \UC{According to official website of United States Environmental Protection Agency (EPA): ``$SO_x$ can react with other compounds in the atmosphere to form small particles. These particles contribute to particulate matter (PM) pollution"\cite{SO2TOPM25}.
 We also discussed the reason that $SO_2$ becomes important later in training with the domain experts. 

@@ -1,24 +1,23 @@
 \section{System design}
 In this section, the requirement and tasks are discussed. Over the past 12 months, we closely worked with two domain researchers in urban air quality analysis and forecasting. 
 One researcher \UC{(R1)} studies the atmospheric diffusion of air pollutants and has interest in what machine learning model learns.
-The other researcher (R2) is working on air pollutant forecasts through machine learning techniques. Both of them have strong domain experience in air quality forecasting. 
+The other researcher (R2) is working on air pollutant forecasts through machine learning techniques. 
+% Both of them have strong domain experience in air quality forecasting. 
 
 % \subsection{Analytical  Goals}
 % We have distilled the following goals based on an informal interview with domain experts who work on utilizing RNN models to predict weather pollution. 
 \subsection{Task analysis}
-
-During the discussions, three general goals were distilled:
+\label{section:design_tasks}
+We distill three general goals: 
 G1: Understand the RNN model behavior/mechanism in high-dimensional forecasts. 
 G2: Understand the feature importance. 
 G3: Support case-based exploration.
-
 % \textbf{G1: Understand the RNN model behavior/mechanism in high-dimensional forecasts.} 
 % Since the target users already have basic knowledge about the RNN models including their structure and theory, the crucial requirement to understand the model is to explain how such structure works for the forecasting tasks. 
 % For example, how do the hidden units capture the information from the time-series data? 
 % Understanding the hidden units is challenging because of the complicated many-to-many relationship which exists among hundreds of hidden units and features. 
 % Compared with tasks related to natural language or image processing, it is difficult to extract semantic information from  high-dimensional time-series data. 
 % An effective way to calculate, summarize, and visualize the relationship as well as the high-dimensional time-series data is required. 
-
 % \textbf{G2: Understand the feature importance.} 
 % Unlike R1, the feature importance explains the machine learning model by considering the model as a black box. 
 % In general, the feature importance measures the contribution of features to the forecasting result and can be effectively understood by the end user who has rich domain knowledge. 
@@ -26,7 +25,6 @@ G3: Support case-based exploration.
 % Understanding the feature importance reflected by deep learning models can increase the trust of the end users or allow the users to justify the result.  
 % Existing techniques include back-propagation-based approaches and perturbation-based forward-propagation approaches. 
 % However, most of these methods target calculating the feature importance/contribution at the individual level and fail to provide an overview across all the features.  
-
 % \textbf{G3: Support case-based exploration.} 
 % Case-based exploration is one of the most effective strategies for humans to interpret machine learning models. 
 % It is based on the assumption that a new problem can be resolved by the solutions of previous similar problems, which can serve as a scaffold for understanding the challenges. 
@@ -35,22 +33,20 @@ G3: Support case-based exploration.
 % However, providing case-based exploration for RNN models is challenging as the system needs to flexible enough for users to filter and search the cases of interest. 
 % To examine a case, which consists of high-dimensional vectors from multiple time steps, the system is also required to be scalable and able to provide informative memorization at the same time. 
 % We aim to provide users a flexible and effective case-based exploration workflow.
-
 % \subsection{Design Tasks}
-\label{section:design_tasks}
-To fulfill the these analytics goals, we have specified the following analytical tasks:
+To fulfill the these analytical goals, we specify the following tasks:
 
 \textbf{T1: Encode hidden state statistics.}
 Hidden states, a direct reflection of a model's intermediate results, are critical for revealing the information captured by a model (\textbf{G1, G2}).
-Visualizing hidden state statistics can provide a holistic picture of a model's capacity and behavior.
+Visualizing hidden state statistics can provide a holistic picture of a model's behavior.
 % By linking the hidden state activeness with data and prediction results, users can also identify the blind points where models tend to predict incorrectly.
 % Thus, our system should support encoding various hidden state statistics such as value distribution and the data coverage.
 
-\textbf{T2: Measure and encode feature importance at multiple scales.}
+\textbf{T2: Measure feature importance at multiple scales.}
 % The appropriate technique should be embedded in the system to measure feature importance. 
 % Also, 
 The visual analytics system should allow users to explore feature importance at different scales(\textbf{G2}). 
-For example, the overview level ranks and presents feature importance summarized from the whole dataset. The individual level will focus on the importance of a single case.
+For example, the overview level presents feature importance summarized from the whole dataset and the individual level focuses on the importance of a single case.
 % The group level exploration enables users to select a subset of cases and explore the feature importance distribution, while the individual level will focus on the feature importance of the single case.
 
 
@@ -65,8 +61,8 @@ Targeting at the complicated many-to-many relationship, the hidden states as wel
 \textbf{T4: Support temporal analysis.}
 One major advantage of RNNs is that they can capture time-dependent sequence information.
 % The prediction is affected not only by the features from the last time step, but also the historical information being passed along the sequence.
-Showing what information is preserved along the sequence and what information is discarded helps users better understand how the temporal information is utilized by the model(\textbf{G2, G3}).
-In addition, users can identify the most critical time step that causes a significant change in the model's prediction.
+Showing what information is preserved along the sequence and or discarded helps users better understand how the temporal information is utilized by the model(\textbf{G2, G3}).
+In addition, users can identify the critical time steps that may cause a significant change in prediction.
 % For these reasons, the system should be able to support temporal analysis when interpreting the model's behaviors.
 
 \textbf{T5: Identify data clusters and outliers.}
@@ -101,7 +97,7 @@ Since hundreds of temporal features are taken as input for each case, the effect
 	\centering
     \includegraphics[width=0.49\textwidth]{pictures/System_framework.pdf}
 	\vspace{-3mm}
-	\caption{The system overview. There are three major modules in our system: Preprocessing module, Analysis module and Visualization module. 
+	\caption{The system overview that includes three major modules: Preprocessing module, Analysis module and Visualization module. 
 % 	The preprocessing module estimates the hidden unit response and calculate the feature importance; the analysis module discovers patterns of the model's behaviors; the visualization module provides interfaces for the users to explore the model behavior.
 	}
 	\label{fig:system_framework}

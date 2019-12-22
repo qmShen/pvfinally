@@ -16,7 +16,7 @@ With MultiRNNExplorer, we are able to select models at any epoch. Fig.~\ref{fig:
 Moreover, we find that the $\color{PM25Color}{PM_{2.5}}$ and $\color{PM10Color}{PM_{10}}$ are always clustered together as shown in Fig.~\ref{fig:teaser}A$_1$ and Fig.~\ref{fig:teaser}A$_2$.
 The domain expert explains that $\color{PM25Color}{PM_{2.5}}$ and $\color{PM10Color}{PM_{10}}$ are highly correlated because they are always generated together.
 % On the other hand, we notice that all the features on \color{PM25Color}{$PM_{2.5}$} and \color{PM10Color}{$PM_{10}$} are also grouped by the distance: Fig. \ref{fig:teaser}A$_1$ and A$_2$ show that the features far away from (200km and 300km) or nearby (closer than 30km) the target location are clustered in different groups. 
-This  shows that the model GRU-Dense is able to learn the information related to spatial locations.  
+This shows that the model GRU-Dense learns the information related to spatial locations.  
 
 % Another thing of interest is the hyper-parameters of the model such as the RNN size. 
 % \yh{How the hidden unit size relates with the observation below?}
@@ -33,7 +33,7 @@ This  shows that the model GRU-Dense is able to learn the information related to
 \end{figure}
 
 \subsubsection{Feature importance}
-We select the individual sequences of Fig.~\ref{fig:teaser}D$_2$ and re-sort the features by the importance. 
+We select the individual sequences of Fig.~\ref{fig:teaser}D$_1$ and re-sort the features by the importance. 
 From the Feature Importance View, the top important features are listed as Fig.~\ref{fig:teaser}C, and we observe that most of them are related to feature $\color{SO2Color}{SO_{2}}$ and \textit{\color{WINDColor}{Wind Speed}}.
 Then, top features change to $\color{SO2Color}{SO_2}$ and $\color{PM25Color}{PM_{2.5}}$ in later epochs. 
 This observation shows that feature importance may vary across different individual cases. 

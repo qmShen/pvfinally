@@ -1,6 +1,6 @@
 \section{Discussion and Conclusion}
 
-In this paper, we presented MultiRNNExplorer, a visual analytic system for understanding RNN models for high-dimensional time-series forecasting.
+In this paper, we present MultiRNNExplorer, a visual analytic system for understanding RNN models for high-dimensional time-series forecasting.
 Specifically, we use air pollutant forecasting as the target application. 
 To understand the the model mechanism from a global perspective, we propose a technique to estimate the hidden units' response to an individual feature by measuring how different feature selections affect the hidden units' output distribution. 
 From a finer granularity, we further use the gradient-based method to measure the local feature importance for each sequence instance. 
@@ -20,20 +20,19 @@ Due to the limited screen size, our current design allows 9 groups of individual
 % Throughout the system, the feature type is encoded by categorical colors. Because humans suffer perception issues for more than 10 categorical colors, we manually choose similar colors for highly correlated features (for example, $PM_{2.5}$ and $PM_{10}$ are encoded by light green and dark green). For more features, we may need only a few colors for the features of interest and encode other features by the same color (for example, gray). 
 
 \textbf{Generalization.}
-Though we use air pollutant forecasting as example in this paper, the proposed method can be easily extended to other high-dimensional time-series forecasts with few changes. 
-The only design that may need to be fine-tuned to is feature glyphs (Fig.~\ref{fig:cluster_design}).
-The current design supports encoding three spatial attributes including direction, type, and distance and more design choices can be explored according to different requirements in other domains. 
+Though we use air pollutant forecasting as example in this paper, the proposed method can be extended to other high-dimensional time-series forecasts with few changes. 
+% The only design that may need to be fine-tuned to is feature glyph (Fig.~\ref{fig:cluster_design}).
+The current feature glyph design supports encoding three spatial attributes including direction, type, and distance and more design choices can be explored based on different domain requirements. 
 % Any other cell-like glyph design is also applicable in our method. 
-
-
 % There is some promising future work for MultiRNNExplorer. 
 There are also some future directions to improve MultiRNNExplorer.
 % First, improve the efficiency of the response estimation. With 8375 test cases, the current method needs hours of calculation which has to be done offline. 
 % In the future work, we will improve this method by introducing rational sampling techniques or develop alternative estimation techniques to enable our system to support realtime data processing. 
-One approach is to improve the individual comparison. 
+One approach is improving the individual comparison. 
 In our current design, the individual comparison requires comparing data instances side by side. 
-Supporting interactions to highlight the differences would further benefit users in this scenario.
+Supporting interactions to highlight the differences would be benefitial.
 % A specific comparison design will be helpful to ease the burden of users. 
-We also consider to use our system on other high-dimensional forecasting applications including such as fraud detection\cite{jurgovsky2018sequence}. 
-We are also exploring the possibility of applying MultiRNNExplorer to audio modeling tasks. 
+We also consider applying our system on other high-dimensional forecasting applications such as fraud detection.
+% \cite{jurgovsky2018sequence}. 
+% We are also exploring the possibility of applying MultiRNNExplorer to audio modeling tasks. 
 

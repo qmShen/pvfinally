@@ -10,7 +10,7 @@ In this case, we choose the GRU-Dense model and $PM_{2.5}$ as the target feature
 We switch the time ranges to filter the cases in winter, spring, summer, and fall. 
 To highlight the selected cases, the unfiltered cases are then colored in light grey as shown in Fig.~\ref{fig:seasonal_feature}. 
 We found that the fall and winter cases are clustered at the left-bottom part (Fig.~\ref{fig:seasonal_feature}A and D). 
-The cases in summer are located at the right-top part (Fig.~\ref{fig:seasonal_feature}C), while the cases in spring(Fig.~\ref{fig:seasonal_feature}B) are distributed in different locations compared with the other three seasons .
+The cases in summer are located at the right-top part (Fig.~\ref{fig:seasonal_feature}C).
 Despite some outliers exist in the Projection View as shown in Fig.~\ref{fig:seasonal_feature}A$_1$ and C$_1$, the model is able to capture the complex seasonal features in data based on above observation. 
 
 \subsubsection{Explore the model behavior in winter}
@@ -20,19 +20,21 @@ In the Projection View, we first select the time ranges of January 2018 (Fig.~\r
 We notice there are many cases are colored in dark red, which indicates that these cases suffer a heavy $PM_{2.5}$ pollutant (Fig.~\ref{fig:winter_exploration}C$_1$).
 We select these cases to explore their feature importance distributions and rankings.
 The top ten important features are \textit{\color{WINDColor}{Wind Speed}}, $\color{PM25Color}{PM_{2.5}}$ and $\color{PM10Color}{PM_{10}}$.
-The selected cases also appear in the Individual Views; all these cases form one stack, and we choose one of them as an example as shown in Fig.~\ref{fig:winter_exploration}E$_1$. 
-In the Cluster Importance Chart, cluster 3, 6, and 7 show great influence in the forecast. 
+The selected cases also appear in the Individual Views; and we choose one representative case as shown in Fig.~\ref{fig:winter_exploration}E$_1$. 
+In the Cluster Importance Chart, cluster 1, 7, and 10 show great influence in the forecast. 
 These corresponding feature clusters are shown in Fig.~\ref{fig:winter_exploration}E$_3$, which presents the clusters of $PM_x$ and \textit{Wind Speed} respectively. 
 The above exploration further indicates that the most important features in the forecasting are about $\color{PM25Color}{PM_{2.5}}$, $\color{PM10Color}{PM_{10}}$, and \textit{\color{WINDColor}{Wind Speed}}. 
+\QM{Moreover, by hovering on the feature ``$\color{WINDColor}{30\_NE\_Wind}$" in feature importance view(Fig.~\ref{fig:winter_exploration}D$_1$), the corresponding feature is highlighted in the temporal trend view as Fig.~\ref{fig:winter_exploration}E$_1$ shown, which illustrates a weak wind speed.}
+
 
 The domain experts state: ``During winter, strong radiative cooling over the continent creates a high-pressure anticyclone that drives cold, dry polar air from the continent into the surrounding oceanic areas, resulting in weak to moderate northeasterly winds or strong northerly winds" \cite{louie2005seasonal, murakami1979winter}. 
 The weak to moderate wind is able to bring the air pollutant from Pearl River Delta region in China, which is a highly populated region and has a lot of heavy industry \cite{cao2003characteristics}.
 Thus, the major factors that mostly influence Hong Kong's air quality in winter are the air pollutants and the wind.
-Specifically, the $PM_{2.5}$ and $PM_{10}$ from the north and east affects the prediction results the most. 
+Specifically, the $PM_{2.5}$ and $PM_{10}$ from the north and east mostly affects the prediction results. 
 
 We are also interested in comparing how the model generates prediction for the high-pollutant and low-pollutant cases in the winter. 
 We select individual cases with low $PM_{2.5}$ from the Projection View as Fig.~\ref{fig:winter_exploration}C$_2$ shows, and the these cases appear in the Individual View. 
-By observing the representative case (Fig.~\ref{fig:winter_exploration}E$_2$), we find the cluster 6 is very important at the last timestamp in the Cluster Importance Chart (Fig.~\ref{fig:winter_exploration}E$_4$), which indicates nearby $PM_{2.5}$ and $PM_{10}$. 
+By observing the representative case (Fig.~\ref{fig:winter_exploration}E$_2$), we find only cluster 7 is very important at the last timestamp in the Cluster Importance Chart (Fig.~\ref{fig:winter_exploration}E$_4$), which indicates nearby $PM_{2.5}$ and $PM_{10}$. 
 Both the Top Feature List (Fig.~\ref{fig:winter_exploration}E$_5$) and the Cluster Importance Chart show that the features of recent time steps are very important for the forecast, which is different from the heavy pollution cases (Fig.~\ref{fig:winter_exploration}E$_6$). 
 We infer that for the low air pollutant cases, only recent important features are leveraged by the model. 
 
